@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="/fragments/head.html::head"></head>
+<body>
+<div id="test">
+</div>
+<button id="yes"> click me </button>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#yes").click(function(){
+            $.ajax({
+            type:'POST',
+            url: '/updatePart2',
+            contentType : "application/json;charsetset=UTF-8",
+            data:JSON.stringify({"id":1,"svnUrl":"zxs","vn":"gyx","password":"2q3","filePath":"sa","alias":"as"}),
+            dataType:'html',
+            success:function(data){
+                $("#test").html(data)
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+
+
+        })
+
+
+
+    })
+
+
+
+</script>
+</html>

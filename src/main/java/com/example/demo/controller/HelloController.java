@@ -35,10 +35,10 @@ public class HelloController {
         return new Gson().toJson(itemList);
     }
 
-    @RequestMapping(value = "/edit",method = RequestMethod.GET)
-    public String getEditView(@PathParam("id") String id){
-        SVNItem svnItem = new SVNItem(1, "zxs", "sa", "2q3", "sa", "as");
-        return new Gson().toJson(svnItem);
-    }
+//    @RequestMapping(value = "/edit",method = RequestMethod.GET)
+//    public String getEditView(@PathParam("id") String id){
+//        SVNItem svnItem = new SVNItem(1, "zxs", "sa", "2q3", "sa", "as");
+//        return new Gson().toJson(svnItem);
+//    }
 
 }

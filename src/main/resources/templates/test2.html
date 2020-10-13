@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="/fragments/head.html::head"></head>
+<body>
+<div id="test">
+</div>
+<button id="yes"> click me </button>
+<div id="editForm">
+</div>
+</body>
+<script>
+
+    function del(id){
+        console.log(id);
+         $.ajax({
+                type:'GET',
+                url:'/del?id='+id,
+                success:function(data){
+       			    $('#test').html(data);
+                }
+          });
+    }
+
+     function edit(id){
+        console.log(id);
+         $.ajax({
+                type:'GET',
+                url:'/edit?id='+id,
+                success:function(data){
+       			    $('#editForm').html(data);
+                }
+          });
+    }
+
+    $(document).ready(function(){
+        $("#yes").click(function(){
+            fetch('/updatePart2',{
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({"id":1,"svnUrl":"zxs","vn":"gyx","password":"2q3","filePath":"sa","alias":"as"})
+            })
+            .then(res=>{
+                console.log(res);
+                return res.text();
+            })
+            .then(d=>$("#test").html(d))
+            /*$.ajax({
+            type:'POST',
+            url: '/updatePart2',
+            contentType : "application/json;charsetset=UTF-8",
+            data:JSON.stringify({"id":1,"svnUrl":"zxs","vn":"gyx","password":"2q3","filePath":"sa","alias":"as"}),
+            dataType:'html',
+            success:function(data){
+                $("#test").html(data)
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })*/
+
+
+        })
+
+
+
+    })
+
+
+
+</script>
+</html>
