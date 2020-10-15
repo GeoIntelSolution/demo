@@ -1,5 +1,7 @@
 package com.example.demo.vo;
 
+import java.util.Objects;
+
 public class SVNItem {
     private int id;
     private String svnUrl;
@@ -63,5 +65,23 @@ public class SVNItem {
 
     public void setAlias(String alias) {
         this.alias = alias;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SVNItem svnItem = (SVNItem) o;
+        return id == svnItem.id &&
+                Objects.equals(svnUrl, svnItem.svnUrl) &&
+                Objects.equals(vn, svnItem.vn) &&
+                Objects.equals(password, svnItem.password) &&
+                Objects.equals(filePath, svnItem.filePath) &&
+                Objects.equals(alias, svnItem.alias);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, svnUrl, vn, password, filePath, alias);
     }
 }
